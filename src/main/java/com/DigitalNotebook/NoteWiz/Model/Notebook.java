@@ -12,7 +12,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Notebook {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "notebook_id")
@@ -31,7 +30,7 @@ public class Notebook {
     @Column(name = "updated_on", nullable = true)
     private LocalDateTime updatedOn;
 
-    @OneToMany(mappedBy = "notebook", cascade = CascadeType.ALL, fetch = FetchType.LAZY) // One notebook can have many notes
+    @OneToMany
     private List<Note> notes; // One-to-many relationship with notes
 
     @ManyToOne // Each notebook belongs to one user (creator)

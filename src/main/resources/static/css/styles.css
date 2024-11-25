@@ -1,4 +1,4 @@
-@import url('https://fonts.googleVis.com/css2?family=Poppins:wght@400;600&display=swap');
+@import url('https://fonts.googlevis.com/css2?family=Poppins:wght@400;600&display=swap');
 
 ::after,
 ::before {
@@ -157,6 +157,11 @@ body {
     color: #fff; /* Change text to white on hover */
 }
 
+.custom-width {
+    width: 80%; /* Adjust width as per your requirement */
+    max-width: 200px; /* Optional: Limit the maximum width */
+}
+
 .main-content {
     flex-grow: 1; /* Take remaining space next to sidebar */
     background-color: #fafbfe; /* Light background */
@@ -215,267 +220,294 @@ body {
 }
 
 /*Login Signup styles*/
-    body {
-        font-family: 'Lexend', sans-serif;
-        background-color: #fefae0cc;
-        margin: 0;
-        padding: 0;
-    }
+body {
+    font-family: 'Lexend', sans-serif;
+    background-color: #fefae0cc;
+    margin: 0;
+    padding: 0;
+}
 
-    .login {
-        background-color: #fefae0cc;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        width: 100%;
-    }
+.login {
+    background-color: #fefae0cc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+}
 
-    .inner-frame-wrapper {
-        background-color: #fefae0cc;
-        width: 1280px;
-        max-width: 100%;
-        height: 832px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+.inner-frame-wrapper {
+    background-color: #fefae0cc;
+    width: 1280px;
+    max-width: 100%;
+    height: 832px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-    .inner-frame {
-        width: 1073px;
-        max-width: 90%;
-        background-color: #ffffff;
-        border-radius: 20px;
-        box-shadow: 5px 5px 15px 1px #00000026;
-        padding: 40px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
+.inner-frame {
+    width: 1073px;
+    max-width: 90%;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 5px 5px 15px 1px #00000026;
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-    .group {
-        display: flex;
-        flex-direction: column;
-        width: 50%;
-    }
+.group {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
 
-    .field-wrapper {
-        margin-bottom: 20px;
-        display: flex;
-        flex-direction: column;
-    }
+.field-wrapper {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
 
-    .text-wrapper {
-        font-family: "Lexend-Regular", Helvetica, sans-serif;
-        font-weight: 400;
-        color: #603f26;
-        font-size: 20px;
-        margin-bottom: 8px; /* Space between label and input field */
-    }
+.text-wrapper {
+    font-family: "Lexend-Regular", Helvetica, sans-serif;
+    font-weight: 400;
+    color: #603f26;
+    font-size: 20px;
+    margin-bottom: 8px; /* Space between label and input field */
+}
 
-    .input-field {
-        width: 100%;
-        height: 48px;
-        background-color: #fff;
-        border: 1px solid #b99470;
-        border-radius: 10px;
-        padding: 0 10px;
-        font-size: 16px;
-        font-family: "Lexend-Regular", Helvetica, sans-serif;
-        color: #603f26;
-        outline: none;
-        transition: border-color 0.3s ease;
-    }
+.input-field {
+    width: 100%;
+    height: 48px;
+    background-color: #fff;
+    border: 1px solid #b99470;
+    border-radius: 10px;
+    padding: 0 10px;
+    font-size: 16px;
+    font-family: "Lexend-Regular", Helvetica, sans-serif;
+    color: #603f26;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
 
-    .input-field:focus {
-        border-color: #6c4e31;
-        box-shadow: 0 0 5px rgba(108, 78, 49, 0.5);
-    }
+.input-field:focus {
+    border-color: #6c4e31;
+    box-shadow: 0 0 5px rgba(108, 78, 49, 0.5);
+}
 
-    .overlap-group-wrapper {
-        margin-top: 10px;
-    }
+.overlap-group-wrapper {
+    margin-top: 10px;
+}
 
-    .already-have-an {
-        font-size: 13px;
-        color: #603f26;
-    }
+.already-have-an {
+    font-size: 13px;
+    color: #603f26;
+}
 
-    .overlap-wrapper {
-        margin-top: 20px;
-        display: flex;
-        justify-content: flex-end;
-    }
+.overlap-wrapper {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
 
-    .overlap {
-        background-color: #6c4e31;
-        border-radius: 8px;
-        width: 150px;
-        height: 55px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        border: none;
-        transition: background-color 0.3s ease;
-    }
+.overlap {
+    background-color: #6c4e31;
+    border-radius: 8px;
+    width: 150px;
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+}
 
-    .overlap:hover {
-        background-color: #503a24;
-    }
+.overlap:hover {
+    background-color: #503a24;
+}
 
-    .text-wrapper-3 {
-        font-family: "Lexend-SemiBold", Helvetica, sans-serif;
-        font-weight: 600;
-        color: #fefae0;
-        font-size: 24px;
-    }
+.text-wrapper-3 {
+    font-family: "Lexend-SemiBold", Helvetica, sans-serif;
+    font-weight: 600;
+    color: #fefae0;
+    font-size: 24px;
+}
 
-    .overlap-2 {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        width: 40%;
-    }
+.overlap-2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 40%;
+}
 
-    .overlap-2 img {
-        max-width: 100%;
-        height: auto;
-        margin-bottom: 20px;
-    }
+.overlap-2 img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
 
-    .a-digital-note {
-        font-family: "Lexend-Regular", Helvetica, sans-serif;
-        font-size: 15px;
-        color: #603f26;
-    }
+.a-digital-note {
+    font-family: "Lexend-Regular", Helvetica, sans-serif;
+    font-size: 15px;
+    color: #603f26;
+}
 
-    .signup {
-        background-color: #fefae0cc;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        width: 100%;
-    }
+.signup {
+    background-color: #fefae0cc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+}
 
-    .signup .inner-frame-wrapper {
-        background-color: #fefae0cc;
-        width: 1280px;
-        max-width: 100%;
-        height: 832px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+.signup .inner-frame-wrapper {
+    background-color: #fefae0cc;
+    width: 1280px;
+    max-width: 100%;
+    height: 832px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-    .signup .inner-frame {
-        width: 1073px;
-        max-width: 90%;
-        background-color: #ffffff;
-        border-radius: 20px;
-        box-shadow: 5px 5px 15px 1px #00000026;
-        padding: 40px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
+.signup .inner-frame {
+    width: 1073px;
+    max-width: 90%;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 5px 5px 15px 1px #00000026;
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-    .signup .group {
-        display: flex;
-        flex-direction: column;
-        width: 50%;
-    }
+.signup .group {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
 
-    .field-wrapper {
-        margin-bottom: 20px;
-        display: flex;
-        flex-direction: column;
-    }
+.field-wrapper {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
 
-    .text-wrapper {
-        font-family: "Lexend-Regular", Helvetica, sans-serif;
-        font-weight: 400;
-        color: #603f26;
-        font-size: 20px;
-        margin-bottom: 8px;
-    }
+.text-wrapper {
+    font-family: "Lexend-Regular", Helvetica, sans-serif;
+    font-weight: 400;
+    color: #603f26;
+    font-size: 20px;
+    margin-bottom: 8px;
+}
 
-    .input-field {
-        width: 100%;
-        height: 48px;
-        background-color: #fff;
-        border: 1px solid #b99470;
-        border-radius: 10px;
-        padding: 0 10px;
-        font-size: 16px;
-        font-family: "Lexend-Regular", Helvetica, sans-serif;
-        color: #603f26;
-        outline: none;
-        transition: border-color 0.3s ease;
-    }
+.input-field {
+    width: 100%;
+    height: 48px;
+    background-color: #fff;
+    border: 1px solid #b99470;
+    border-radius: 10px;
+    padding: 0 10px;
+    font-size: 16px;
+    font-family: "Lexend-Regular", Helvetica, sans-serif;
+    color: #603f26;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
 
-    .input-field:focus {
-        border-color: #6c4e31;
-        box-shadow: 0 0 5px rgba(108, 78, 49, 0.5);
-    }
+.input-field:focus {
+    border-color: #6c4e31;
+    box-shadow: 0 0 5px rgba(108, 78, 49, 0.5);
+}
 
-    .signup .overlap-group-wrapper {
-        margin-top: 10px;
-    }
+.signup .overlap-group-wrapper {
+    margin-top: 10px;
+}
 
-    .signup .already-have-an {
-        font-size: 13px;
-        color: #603f26;
-    }
+.signup .already-have-an {
+    font-size: 13px;
+    color: #603f26;
+}
 
-    .signup .overlap-wrapper {
-        margin-top: 20px;
-        display: flex;
-        justify-content: flex-end;
-    }
+.signup .overlap-wrapper {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
 
-    .signup .overlap {
-        background-color: #6c4e31;
-        border-radius: 8px;
-        width: 150px;
-        height: 55px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        border: none;
-        transition: background-color 0.3s ease;
-    }
+.signup .overlap {
+    background-color: #6c4e31;
+    border-radius: 8px;
+    width: 150px;
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+}
 
-    .signup .overlap:hover {
-        background-color: #503a24;
-    }
+.signup .overlap:hover {
+    background-color: #503a24;
+}
 
-    .signup .text-wrapper-3 {
-        font-family: "Lexend-SemiBold", Helvetica, sans-serif;
-        font-weight: 600;
-        color: #fefae0;
-        font-size: 24px;
-    }
+.signup .text-wrapper-3 {
+    font-family: "Lexend-SemiBold", Helvetica, sans-serif;
+    font-weight: 600;
+    color: #fefae0;
+    font-size: 24px;
+}
 
-    .signup .overlap-2 {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        width: 40%;
-    }
+.signup .overlap-2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 40%;
+}
 
-    .signup .overlap-2 img {
-        max-width: 100%;
-        height: auto;
-        margin-bottom: 20px;
-    }
+.signup .overlap-2 img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
 
-    .signup .a-digital-note {
-        font-family: "Lexend-Regular", Helvetica, sans-serif;
-        font-size: 15px;
-        color: #603f26;
-    }
+.signup .a-digital-note {
+    font-family: "Lexend-Regular", Helvetica, sans-serif;
+    font-size: 15px;
+    color: #603f26;
+}
+
+/* Editor Styling */
+#editor {
+    height: 300px;
+    margin: 20px 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 1rem;
+}
+
+#addNoteForm {
+    background: #ffffff;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Main Content Styling */
+.main {
+    flex-grow: 1; /* Occupy remaining space */
+    padding: 2rem;
+    background-color: #fafbfe;
+}
+

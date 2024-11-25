@@ -2,6 +2,7 @@ package com.DigitalNotebook.NoteWiz.Controller;
 
 import com.DigitalNotebook.NoteWiz.Model.User;
 import com.DigitalNotebook.NoteWiz.Service.UserService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -48,10 +49,13 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestParam String email, @RequestParam String password, RedirectAttributes redirectAttributes) {
+    public String login(@RequestParam String email, @RequestParam String password, HttpSession session, RedirectAttributes redirectAttributes) {
         String response = userService.loginUser(email, password);
 
         if (response.equals("Login successful")) {
+            User loggedInUser = userService.getUserByEmail(email);
+
+            session.setAttribute("loggedInUser", loggedInUser);
             redirectAttributes.addFlashAttribute("successMessage", "Login successful! Welcome back.");
             return "redirect:/home";
         } else {

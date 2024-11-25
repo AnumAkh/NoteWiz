@@ -21,9 +21,12 @@ public class Note {
     @Column(name = "note_title", nullable = false)
     private String noteTitle;
 
+    @Column(name = "content_blob")
+    private byte[] contentBlob; // For handling 'pdf' or 'image' content
+
     @NotNull
     @Column(name = "content", nullable = false, columnDefinition = "TEXT")
-    private String content;
+    private String content; // The text content for text notes
 
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
@@ -31,13 +34,7 @@ public class Note {
     @Column(name = "updated_at", nullable = true)
     private LocalDateTime updatedAt;
 
-    @ManyToOne // Each note belongs to one notebook
-    @JoinColumn(name = "notebook_id", referencedColumnName = "notebook_id")
-    private Notebook notebook; // Association with the Notebook entity
-
-    @ManyToOne // Each note is created by a user
+    @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "user_id")
-    private User user; // Association with the User entity (creator)
-
-    // Lombok will automatically generate constructors, getters, and setters
+    private User user; // The user who created the note
 }
