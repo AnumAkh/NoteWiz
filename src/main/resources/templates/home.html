@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="~{base :: header_info}">
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.6.0/dist/full.min.css" rel="stylesheet" type="text/css" />
+  <title>Home Page</title>
+</head>
+<body>
+<main>
+  <div class="wrapper">
+    <!-- Sidebar -->
+    <div th:replace="~{base :: main_sidebar}"></div>
+
+    <!-- Main Content -->
+    <div class="main-content p-4">
+      <div>
+        <h1 class="main-heading">What would you like to note today?</h1>
+      </div>
+      <section class="home-sec d-flex justify-content-start align-items-start flex-wrap gap-4">
+        <div class="card bg-base-100 shadow-lg" style="width: 200px;">
+          <figure>
+            <img src="https://www.weareteachers.com/wp-content/uploads/note-taking-strategies-cornell.jpg" alt="Shoes" class="img-fluid"/>
+          </figure>
+          <div class="card-body">
+            <h2 class="card-title">Shoes!</h2>
+            <p>If a dog chews shoes whose shoes does he choose?</p>
+          </div>
+        </div>
+        <div class="card bg-base-100 shadow-lg" style="width: 200px;">
+          <figure>
+            <img src="https://www.weareteachers.com/wp-content/uploads/note-taking-strategies-cornell.jpg" alt="Shoes" class="img-fluid"/>
+          </figure>
+          <div class="card-body">
+            <h2 class="card-title">Shoes!</h2>
+            <p>If a dog chews shoes whose shoes does he choose?</p>
+          </div>
+        </div>
+        <div class="card bg-base-100 shadow-lg" style="width: 200px;">
+          <figure>
+            <img src="https://www.weareteachers.com/wp-content/uploads/note-taking-strategies-cornell.jpg" alt="Shoes" class="img-fluid"/>
+          </figure>
+          <div class="card-body">
+            <h2 class="card-title">Shoes!</h2>
+            <p>If a dog chews shoes whose shoes does he choose?</p>
+          </div>
+        </div>
+        <div class="card bg-base-100 shadow-lg" style="width: 200px;">
+          <figure>
+            <img src="https://www.weareteachers.com/wp-content/uploads/note-taking-strategies-cornell.jpg" alt="Shoes" class="img-fluid"/>
+          </figure>
+          <div class="card-body">
+            <h2 class="card-title">Shoes!</h2>
+            <p>If a dog chews shoes whose shoes does he choose?</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+<script src="/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signup Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+
+    </style>
+</head>
+<body>
+<div class="signup">
+    <div class="inner-frame-wrapper">
+        <div class="inner-frame">
+            <!-- Signup Form -->
+            <form action="/signup" method="POST" class="group">
+                <!-- First Name Field -->
+                <div class="field-wrapper">
+                    <label for="firstName" class="text-wrapper">First Name</label>
+                    <input type="text" id="firstName" name="firstName" class="input-field" placeholder="Enter your first name" required />
+                </div>
+                <!-- Last Name Field -->
+                <div class="field-wrapper">
+                    <label for="lastName" class="text-wrapper">Last Name</label>
+                    <input type="text" id="lastName" name="lastName" class="input-field" placeholder="Enter your last name" required />
+                </div>
+                <!-- Email Field -->
+                <div class="field-wrapper">
+                    <label for="email" class="text-wrapper">Email</label>
+                    <input type="email" id="email" name="email" class="input-field" placeholder="Enter your email" required />
+                </div>
+                <!-- Password Field -->
+                <div class="field-wrapper">
+                    <label for="password" class="text-wrapper">Password</label>
+                    <input type="password" id="password" name="password" class="input-field" placeholder="Enter your password" required />
+                </div>
+                <!-- Already have an account -->
+                <div class="overlap-group-wrapper">
+                    <p class="already-have-an">Already have an account? <a href="/templates/login">Login</a></p>
+                </div>
+                <!-- Signup Button -->
+                <div class="overlap-wrapper">
+                    <button type="submit" class="overlap">
+                        <span class="text-wrapper-3">Signup</span>
+                    </button>
+                </div>
+            </form>
+            <!-- Logo and Slogan -->
+            <div class="overlap-2">
+                <img src="/img/noteWiz.png" alt="Logo" />
+                <p class="a-digital-note">A DIGITAL NOTE TAKING SOLUTION.</p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
