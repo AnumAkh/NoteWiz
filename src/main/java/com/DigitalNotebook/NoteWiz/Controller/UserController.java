@@ -20,22 +20,22 @@ public class UserController {
         this.userService = userService;
     }
 
-    // Display the signup page
     @GetMapping("/signup")
     public String showSignupPage(Model model) {
         model.addAttribute("user", new User());
-        return "signup";  // Returns the signup view (signup.html or signup.jsp)
+        return "signup";  // Returns the signup view
     }
 
     // Handle signup form submission
     @PostMapping("/signup")
     public String signup(@ModelAttribute User user, RedirectAttributes redirectAttributes) {
         String response = userService.registerUser(user);
-        System.out.println("input taken from user" +user.getFirstName()+"  "+user.getPassword());
+        System.out.println("input taken from user" + user.getFirstName() + "  " + user.getPassword());
 
         if (response.equals("User registered successfully")) {
             redirectAttributes.addFlashAttribute("successMessage", "Signup successful! Please log in.");
-            return "redirect:/login";  // Redirect to login page after successful signup
+            return "redirect:/login";
+            // Redirect to login page after successful signup
         } else {
             redirectAttributes.addFlashAttribute("errorMessage", response);
             return "redirect:/signup";
@@ -52,12 +52,19 @@ public class UserController {
     public String login(@RequestParam String email, @RequestParam String password, HttpSession session, RedirectAttributes redirectAttributes) {
         String response = userService.loginUser(email, password);
 
-        if (response.equals("Login successful")) {
+        if ("Login successful".equals(response)) {
+            // Retrieve the user and store in session
             User loggedInUser = userService.getUserByEmail(email);
 
-            session.setAttribute("loggedInUser", loggedInUser);
-            redirectAttributes.addFlashAttribute("successMessage", "Login successful! Welcome back.");
-            return "redirect:/home";
+            if (loggedInUser != null) {
+                session.setAttribute("loggedInUser", loggedInUser);
+                redirectAttributes.addFlashAttribute("successMessage", "Login successful! Welcome back.");
+                return "redirect:/home";
+            } else {
+                // when login succeeds but user data is not retrievable
+                redirectAttributes.addFlashAttribute("errorMessage", "Unexpected error: Unable to retrieve user details.");
+                return "redirect:/login";
+            }
         } else {
             redirectAttributes.addFlashAttribute("errorMessage", response);
             return "redirect:/login";

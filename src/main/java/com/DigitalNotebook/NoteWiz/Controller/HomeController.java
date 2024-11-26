@@ -24,10 +24,13 @@ public class HomeController {
 
     @GetMapping("/home")
     public String home(HttpSession session, Model model) {
+
+        // retrieves the loggedInUser session attributes and adds it to the model as user
+
         User loggedInUser = (User) session.getAttribute("loggedInUser");
 
         if (loggedInUser == null) {
-            return "redirect:/login"; // Redirect if not logged in
+            return "redirect:/login";
         }
 
         model.addAttribute("user", loggedInUser);

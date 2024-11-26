@@ -26,7 +26,8 @@ public class NoteController {
         User loggedInUser = (User) session.getAttribute("loggedInUser");
 
         if (loggedInUser == null) {
-            return ResponseEntity.status(401).body(null); // Unauthorized if no user is logged in
+            return ResponseEntity.status(401).body(null);
+            // Unauthorized if no user is logged in
         }
 
         // Assign the user to the note

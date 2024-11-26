@@ -1,0 +1,513 @@
+@import url('https://fonts.googlevis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+::after,
+::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+h1 {
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+.main {
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    transition: all 0.35s ease-in-out;
+    padding: 1rem;
+    background-color: #fafbfe;
+}
+
+#sidebar {
+    width: 260px;
+    min-width: 70px;
+    z-index: 1000;
+    transition: none;
+    background-color: #FEF0E0;
+    display: flex;
+    flex-direction: column;
+}
+
+#sidebar.expand {
+    width: 260px;
+    min-width: 260px;
+}
+
+.toggle-btn {
+    background-color: transparent;
+    cursor: pointer;
+    border: 0;
+    padding: 1rem 1.5rem;
+}
+
+.toggle-btn i {
+    font-size: 1.5rem;
+    color: #603F26;
+}
+
+.sidebar-logo {
+    margin: auto 0;
+}
+
+.sidebar-logo a {
+    color: #603F26;
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+.sidebar-nav {
+    padding: 2rem 0;
+    flex: 1 1 auto;
+}
+
+a.sidebar-link {
+    padding: .625rem 1.625rem;
+    color: #603F26;
+    display: block;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    border-left: 3px solid transparent;
+}
+
+.sidebar-link i {
+    font-size: 1.1rem;
+    margin-right: .75rem;
+}
+
+a.sidebar-link:hover {
+    background-color: rgba(255, 255, 255, .075);
+    border-left: 3px solid #3b7ddd;
+}
+
+.sidebar-item {
+    position: relative;
+}
+
+#sidebar:not(.expand) .sidebar-item .sidebar-dropdown {
+    position: absolute;
+    top: 0;
+    left: 70px;
+    background-color: #0e2238;
+    padding: 0;
+    min-width: 15rem;
+    display: block;
+}
+
+#sidebar:not(.expand) .sidebar-item:hover .has-dropdown+.sidebar-dropdown {
+    display: block;
+    max-height: 15em;
+    width: 100%;
+    opacity: 1;
+}
+
+body {
+    background-color: #f4f5f5;
+}
+/* Custom button styling */
+.btn-notes, .btn-attach {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    border-radius: 30px; /* Rounded corners */
+    font-weight: 600;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-decoration: none;
+    color: #5A4A39; /* Dark brown text color */
+    border: none; /* Remove default border */
+}
+
+.btn-notes {
+    background-color: #A9CBB2; /* Light green for the 'Notes' button */
+}
+
+.btn-attach {
+    background-color: #D3C6B7; /* Light green for the 'Attach File' button */
+    justify-content: center;
+    padding: 12px 18px;
+}
+
+.btn-notes span, .btn-attach i {
+    margin-right: 8px; /* Space between icon and text */
+    font-size: 18px; /* Adjust font size */
+}
+
+.btn-notes:hover, .btn-attach:hover {
+    background-color: #8A9E7D; /* Darker green on hover */
+    color: #fff; /* Change text to white on hover */
+}
+
+.custom-width {
+    width: 80%; /* Adjust width as per your requirement */
+    max-width: 200px; /* Optional: Limit the maximum width */
+}
+
+.main-content {
+    flex-grow: 1; /* Take remaining space next to sidebar */
+    background-color: #fafbfe; /* Light background */
+    padding: 2rem;
+    overflow-y: auto; /* Allow scrolling if content overflows */
+}
+
+/* Card customization */
+
+.home-sec {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.card {
+    flex: 1 1 calc(25% - 40px);
+    max-width: 100px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+.home-sec .card {
+    max-width: 200px;
+    border-radius: 8px;
+}
+
+.home-sec img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.home-sec .card-body {
+    text-align: center;
+}
+
+/* Button styles */
+.btn-primary {
+    background-color: #6c4e31;
+    border-color: #6c4e31;
+    color: #fefae0;
+}
+
+.btn-primary:hover {
+    background-color: #502e1f;
+    border-color: #502e1f;
+    color: #fff;
+}
+
+.main-heading{
+    margin-bottom: 40px;
+}
+
+/*Login Signup styles*/
+body {
+    font-family: 'Lexend', sans-serif;
+    background-color: #fefae0cc;
+    margin: 0;
+    padding: 0;
+}
+
+.login {
+    background-color: #fefae0cc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.inner-frame-wrapper {
+    background-color: #fefae0cc;
+    width: 1280px;
+    max-width: 100%;
+    height: 832px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inner-frame {
+    width: 1073px;
+    max-width: 90%;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 5px 5px 15px 1px #00000026;
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.group {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.field-wrapper {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.text-wrapper {
+    font-family: "Lexend-Regular", Helvetica, sans-serif;
+    font-weight: 400;
+    color: #603f26;
+    font-size: 20px;
+    margin-bottom: 8px; /* Space between label and input field */
+}
+
+.input-field {
+    width: 100%;
+    height: 48px;
+    background-color: #fff;
+    border: 1px solid #b99470;
+    border-radius: 10px;
+    padding: 0 10px;
+    font-size: 16px;
+    font-family: "Lexend-Regular", Helvetica, sans-serif;
+    color: #603f26;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.input-field:focus {
+    border-color: #6c4e31;
+    box-shadow: 0 0 5px rgba(108, 78, 49, 0.5);
+}
+
+.overlap-group-wrapper {
+    margin-top: 10px;
+}
+
+.already-have-an {
+    font-size: 13px;
+    color: #603f26;
+}
+
+.overlap-wrapper {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.overlap {
+    background-color: #6c4e31;
+    border-radius: 8px;
+    width: 150px;
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.overlap:hover {
+    background-color: #503a24;
+}
+
+.text-wrapper-3 {
+    font-family: "Lexend-SemiBold", Helvetica, sans-serif;
+    font-weight: 600;
+    color: #fefae0;
+    font-size: 24px;
+}
+
+.overlap-2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 40%;
+}
+
+.overlap-2 img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.a-digital-note {
+    font-family: "Lexend-Regular", Helvetica, sans-serif;
+    font-size: 15px;
+    color: #603f26;
+}
+
+.signup {
+    background-color: #fefae0cc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.signup .inner-frame-wrapper {
+    background-color: #fefae0cc;
+    width: 1280px;
+    max-width: 100%;
+    height: 832px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup .inner-frame {
+    width: 1073px;
+    max-width: 90%;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 5px 5px 15px 1px #00000026;
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.signup .group {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.field-wrapper {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.text-wrapper {
+    font-family: "Lexend-Regular", Helvetica, sans-serif;
+    font-weight: 400;
+    color: #603f26;
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.input-field {
+    width: 100%;
+    height: 48px;
+    background-color: #fff;
+    border: 1px solid #b99470;
+    border-radius: 10px;
+    padding: 0 10px;
+    font-size: 16px;
+    font-family: "Lexend-Regular", Helvetica, sans-serif;
+    color: #603f26;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.input-field:focus {
+    border-color: #6c4e31;
+    box-shadow: 0 0 5px rgba(108, 78, 49, 0.5);
+}
+
+.signup .overlap-group-wrapper {
+    margin-top: 10px;
+}
+
+.signup .already-have-an {
+    font-size: 13px;
+    color: #603f26;
+}
+
+.signup .overlap-wrapper {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.signup .overlap {
+    background-color: #6c4e31;
+    border-radius: 8px;
+    width: 150px;
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.signup .overlap:hover {
+    background-color: #503a24;
+}
+
+.signup .text-wrapper-3 {
+    font-family: "Lexend-SemiBold", Helvetica, sans-serif;
+    font-weight: 600;
+    color: #fefae0;
+    font-size: 24px;
+}
+
+.signup .overlap-2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 40%;
+}
+
+.signup .overlap-2 img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.signup .a-digital-note {
+    font-family: "Lexend-Regular", Helvetica, sans-serif;
+    font-size: 15px;
+    color: #603f26;
+}
+
+/* Editor Styling */
+#editor {
+    height: 300px;
+    margin: 20px 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 1rem;
+}
+
+#addNoteForm {
+    background: #ffffff;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Main Content Styling */
+.main {
+    flex-grow: 1; /* Occupy remaining space */
+    padding: 2rem;
+    background-color: #fafbfe;
+}
+
