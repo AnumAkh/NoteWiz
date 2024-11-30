@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{base :: header_info}">
+  <title>Edit Note</title>
+  <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet">
+</head>
+<body>
+<div class="wrapper">
+  <!-- Sidebar -->
+  <div th:replace="~{base :: main_sidebar}" id="sidebar"></div>
+
+  <!-- Main Content -->
+  <div class="main">
+    <h1>Edit Note</h1>
+    <section id="editNoteForm">
+      <input type="text" id="noteTitle" class="form-control mb-2" th:value="${noteTitle}" placeholder="Enter Note Title">
+      <div id="editor" th:utext="${noteContent}"></div>
+      <textarea id="noteContent" name="noteContent" style="display: none;"></textarea>
+      <button class="btn btn-success" id="saveEditNoteButton">Save Changes</button>
+    </section>
+  </div>
+</div>
+<script>
+  document.getElementById("saveEditNoteButton").addEventListener("click", async () => {
+    console.log("Save Note Button Clicked!");
+
+    const noteId = new URLSearchParams(window.location.search).get("noteId"); // Get noteId from URL
+    const noteTitle = document.getElementById("noteTitle").value; // Get note title
+    const noteContent = quill.root.innerHTML; // Get content from Quill editor
+
+    if (!noteTitle || !noteContent) {
+        alert("Please fill in the note title and content.");
+        return;
+    }
+
+    // Prepare the note data
+    const noteData = {
+        noteId: parseInt(noteId), // Ensure noteId is included for update
+        noteTitle: noteTitle,
+        content: noteContent,
+    };
+
+    console.log("Note Data:", noteData);
+
+    // Send data to the backend
+    try {
+        const response = await fetch("/notes/update", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json", // Set Content-Type to JSON
+            },
+            body: JSON.stringify(noteData),
+        });
+
+        if (response.ok) {
+            alert("Note updated successfully!");
+            window.location.href = "/home"; // Redirect to home or refresh
+        } else {
+            alert("Failed to update note.");
+        }
+    } catch (error) {
+        console.error("Error updating note:", error);
+        alert("An error occurred while updating the note.");
+    }
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+<script src="/js/script.js"></script>
+</body>
+</html>
