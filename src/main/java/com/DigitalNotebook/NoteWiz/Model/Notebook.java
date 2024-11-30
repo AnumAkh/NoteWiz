@@ -36,6 +36,4 @@ public class Notebook {
     @ManyToOne // Each notebook belongs to one user (creator)
     @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     private User user; // Association with the User entity (creator)
-
-    // Lombok will automatically generate constructors, getters, and setters
 }

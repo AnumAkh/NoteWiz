@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Save Note Button Click
-document.getElementById("saveNoteBtn").addEventListener("click", async () => {
+document.getElementById("saveAddNoteButton").addEventListener("click", async () => {
     console.log("Save Note Button Clicked!");
     const noteTitle = document.getElementById("noteTitle").value; // Get note title
     const noteContent = quill.root.innerHTML; // Get content from Quill editor
@@ -77,3 +77,39 @@ document.getElementById("saveNoteBtn").addEventListener("click", async () => {
         alert("An error occurred while saving the note.");
     }
 });
+
+
+function deleteNote(noteId) {
+if (confirm("Are you sure you want to delete this note?")) {
+  fetch('/notes/delete/' + noteId, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      'JSESSIONID': getCookie('JSESSIONID')
+    }
+  })
+  .then(response => {
+    if (response.ok) {
+      alert('Note deleted successfully!');
+      location.reload();
+    } else {
+      alert('Failed to delete the note.');
+    }
+  })
+  .catch(error => {
+    console.error('Error deleting the note:', error);
+    alert('An error occurred while deleting the note.');
+  });
+}
+}
+
+function getCookie(name) {
+const value = `; ${document.cookie}`;
+const parts = value.split(`; ${name}=`);
+if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
+function editNote(noteId) {
+    window.location.href = `/notes/editNote?noteId=${noteId}`;
+}
+
