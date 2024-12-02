@@ -4,6 +4,7 @@ import lombok.*;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "Notes")
@@ -37,4 +38,11 @@ public class Note {
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     private User user; // The user who created the note
+
+    @ManyToOne
+    @JoinColumn(name = "notebook_id", referencedColumnName = "notebook_id")
+    private Notebook notebook;
+
+    @OneToMany(mappedBy = "note")
+    private List<Tag> tags;
 }

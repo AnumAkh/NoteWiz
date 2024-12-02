@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="~{base :: header_info}">
+    <title>My Notebooks</title>
+    <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="wrapper">
+    <!-- Sidebar -->
+    <div th:replace="~{base :: main_sidebar}" id="sidebar"></div>
+
+    <!-- Main Content -->
+    <div class="main">
+        <h1>My Notebooks</h1>
+
+        <div class="frame">
+<!--            <div class="group">-->
+<!--                <div class="div">Titles</div>-->
+<!--                <div class="text-wrapper-2">Updated at</div>-->
+<!--                <div class="text-wrapper-2">Shared with</div>-->
+<!--            </div>-->
+            <!-- Notebook Count -->
+<!--            <div class="text-wrapper-4">-->
+<!--                <span th:text="${notebookCount} + ' Notebooks'">Notebooks</span>-->
+<!--            </div>-->
+
+            <div class="notebook-overview">
+                <p class="notebook-count" th:text="${notebookCount} + ' Notebooks'">Total Notebooks: 0</p>
+            </div>
+
+<!--            <div th:each="notebook : ${notebooks}">-->
+<!--                <h3 th:text="${notebook.notebookTitle}">Notebook Title</h3>-->
+<!--                <table>-->
+<!--                    <thead>-->
+<!--                    <tr>-->
+<!--                        <th>Note Title</th>-->
+<!--                        <th>Content</th>-->
+<!--                    </tr>-->
+<!--                    </thead>-->
+<!--                    <tbody>-->
+<!--                    <tr th:each="note : ${notebook.notes}">-->
+<!--                        <td th:text="${note.noteTitle}">Note Title</td>-->
+<!--                        <td th:utext="${note.content}">Note Content</td>-->
+<!--                    </tr>-->
+<!--                    <tr th:if="${notebook.notes.size() == 0}">-->
+<!--                        <td colspan="2">No notes available.</td>-->
+<!--                    </tr>-->
+<!--                    </tbody>-->
+<!--                </table>-->
+<!--            </div>-->
+
+            <div class="notebook-container">
+                <!-- Each Notebook Card -->
+                <div th:each="notebook : ${notebooks}" class="notebook-card">
+                    <div class="notebook-header">
+                        <h3 class="notebook-title" th:text="${notebook.notebookTitle}">Notebook Title</h3>
+<!--                        <p class="notebook-meta">-->
+<!--                            Updated at: <span th:text="${notebook.updatedAt}">Date</span> |-->
+<!--                            Shared with: <span th:text="${notebook.sharedWith}">Shared Users</span>-->
+<!--                        </p>-->
+                    </div>
+                    <div class="notebook-content">
+                        <h4>Notes</h4>
+                        <ul class="note-list">
+                            <li th:each="note : ${notebook.notes}" class="note-item">
+                                <strong th:text="${note.noteTitle}">Note Title</strong>:
+                                <span th:utext="${note.content}">Note Content</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+<script src="/js/script.js"></script>
+
+</body>
+</html>

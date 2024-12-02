@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="~{base :: header_info}">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.6.0/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet">
+    <title>Forum Page</title>
+</head>
+<body>
+
+<main>
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <div th:replace="~{base :: main_sidebar}"></div>
+        <main class="main-content">
+            <header class="header">
+                <h1>Discussion Forum</h1>
+                <div class="header-controls">
+                    <button class="create-post-btn btn btn-primary" data-bs-toggle="modal" data-bs-target="#createPostModal">Create Post</button>
+                    <!--                    <input type="text" id="searchBar" class="search-bar" placeholder="Search">-->
+                    <form action="/forum/search" method="GET" style="display: inline;">
+                        <input type="text" id="searchBar" name="keyword" class="search-bar-forum" placeholder="Search" required>
+                        <button type="submit" class="btn btn-secondary">Search</button>
+                    </form>
+                    <!-- Create Post Modal -->
+                    <div class="modal fade" id="createPostModal" tabindex="-1" aria-labelledby="createPostModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="createPostModalLabel">Create New Post</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="createPostForm">
+                                        <div class="mb-3">
+                                            <label for="postTitle" class="form-label">Post Title</label>
+                                            <input type="text" class="form-control" id="postTitle" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="postContent" class="form-label">Post Content</label>
+                                            <textarea class="form-control" id="postContent" rows="3" required></textarea>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                    <button type="button" class="btn btn-primary" id="savePostButton">Save Post</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </header>
+            <section class="posts">
+                <div th:each="post : ${posts}">
+                    <article class="post" th:attr="data-post-id=${post.post_id}">
+                        <h2 class="post-title" th:text="${post.postTitle}">Post Title</h2>
+                        <div class="post-meta">
+                            <img src="/img/user.png" alt="User Avatar" class="user-avatar">
+                            <div>
+                                <p class="post-author" th:text="${post.postAuthorName}">Author Name</p>
+                                <p class="post-date" th:text="${post.formattedCreatedOn}">Date</p>
+                            </div>
+                            <div class="post-actions">
+                                <button class="action-btn">Upvote</button>
+                                <button class="action-btn">Downvote</button>
+                                <button class="view-replies-btn" th:onclick="'window.location.href=\'/forum/post/' + ${post.post_id} + '\''">View Replies</button>
+                            </div>
+                        </div>
+                        <div class="post-stats">
+                            <span class="likes" th:text="${post.totalUpvote + ' Likes'}">0 Likes</span>
+                            <span class="dislikes" th:text="${post.totalDownvote + ' Dislikes'}">0 Dislikes</span>
+                            <span th:text="${post.commentCount} + ' Comments'">0 Comments</span>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </main>
+    </div>
+</main>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+     const actionButtons = document.querySelectorAll('.action-btn');
+
+     if (actionButtons.length === 0) {
+         console.error('No action buttons found on the page.');
+         return;
+     }
+
+     actionButtons.forEach(button => {
+         button.addEventListener('click', (event) => {
+             const buttonType = event.target.textContent.trim();
+             alert(`You clicked ${buttonType}`);
+         });
+     });
+ });
+
+document.addEventListener("DOMContentLoaded", () => {
+const actionButtons = document.querySelectorAll('.action-btn');
+
+actionButtons.forEach(button => {
+    button.addEventListener('click', async (event) => {
+        const postElement = event.target.closest('.post'); // Locate the post
+        const postId = postElement.getAttribute('data-post-id'); // Get the post ID
+        const action = event.target.textContent.trim().toLowerCase(); // Action type (upvote or downvote)
+
+        try {
+            const response = await fetch(`/forum/${action}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ postId }),
+            });
+
+            if (response.ok) {
+                const updatedCounts = await response.json();
+                alert(`${action} recorded successfully!`);
+
+                // Update the UI
+                postElement.querySelector('.post-stats .likes').textContent = `${updatedCounts.totalUpvote} Likes`;
+                postElement.querySelector('.post-stats .dislikes').textContent = `${updatedCounts.totalDownvote} Dislikes`;
+            } else {
+                alert(`Now you cannot do ${action}.`);
+            }
+        } catch (error) {
+            console.error(`Error recording ${action}:`, error);
+            alert(`An error occurred while recording ${action}.`);
+        }
+    });
+});
+});
+
+     document.getElementById("savePostButton").addEventListener("click", async () => {
+        const title = document.getElementById("postTitle").value.trim();
+        const content = document.getElementById("postContent").value.trim();
+
+        if (!title || !content) {
+            alert("Both title and content are required!");
+            return;
+        }
+
+        const postData = {
+            postTitle: title,
+            postContent: content,
+        };
+
+        try {
+            const response = await fetch('/forum/create', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(postData),
+            });
+
+            if (response.ok) {
+                alert("Post created successfully!");
+                location.reload(); // Reload to show the new post
+            } else {
+                alert("Failed to create post. Please try again.");
+            }
+        } catch (error) {
+            console.error("Error creating post:", error);
+            alert("An error occurred. Please try again.");
+        }
+    });
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+<script src="/js/script.js"></script>
+</body>
+</html>

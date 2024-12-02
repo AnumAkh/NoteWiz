@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="~{base :: header_info}">
+    <title>Shared Notes</title>
+</head>
+<body>
+<main>
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <div th:replace="~{base :: main_sidebar}"></div>
+
+        <!-- Main Content -->
+        <div class="main-content p-4">
+            <h1>Notes Shared With You</h1>
+            <section class="home-sec d-flex justify-content-start align-items-start flex-wrap gap-4">
+                <div th:each="note : ${notes}" class="card bg-base-100 shadow-lg note-card" style="width: 200px;">
+                    <figure>
+                        <img src="/img/note.png" alt="Note Image" class="img-fluid" />
+                    </figure>
+                    <div class="card-body">
+                        <h2 class="card-title" th:text="${note.noteTitle}">Note Title</h2>
+                        <div class="dropdown">
+                            <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                Actions
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <li><a class="dropdown-item" href="#" th:onclick="'viewSharedNote(' + ${note.noteId} + ')'">View Note</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</main>
+<script>
+    function viewSharedNote(noteId) {
+    window.location.href = `/viewSharedNote?noteId=${noteId}`;
+}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/js/script.js"></script>
+</body>
+</html>

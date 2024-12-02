@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{base :: header_info}">
+    <title>View Tags</title>
+</head>
+<body>
+<div class="view-tags-wrapper">
+    <!-- Sidebar -->
+    <div th:replace="~{base :: main_sidebar}" id="sidebar"></div>
+
+    <!-- Main Content -->
+    <div class="view-tags-main">
+        <div class="view-tags-container mt-5">
+            <h2>YOUR NOTES AND TAGS</h2>
+
+            <!-- Search Bar -->
+            <div class="search-bar mb-4">
+                <input type="text" id="tagSearch" class="form-control" placeholder="Search by tag name" />
+                <button class="btn btn-primary mt-2" id="searchButton">Search</button>
+            </div>
+
+            <div class="view-tags-row">
+                <!-- Loop through the notes -->
+                <div class="view-tags-col mb-3" th:each="note : ${notes}" th:if="${note.tags != null and #lists.size(note.tags) > 0}">
+                    <div class="view-tags-card">
+                        <div class="view-tags-card-body">
+                            <h5 class="view-tags-card-title" th:text="${note.noteTitle}"></h5>
+                            <p class="view-tags-card-text" th:utext="${note.content}"></p>
+                            <div>
+                                <h6>Tags:</h6>
+                                <ul class="view-tags-list">
+                                    <li class="view-tags-item" th:each="tag : ${note.tags}" th:text="${tag.tagName}"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/script.js"></script>
+<script>
+    document.getElementById('searchButton').addEventListener('click', function() {
+        var tagSearchValue = document.getElementById('tagSearch').value.trim().toLowerCase();
+
+        var notes = document.querySelectorAll('.view-tags-col');
+        notes.forEach(function(note) {
+            var tags = note.querySelectorAll('.view-tags-item');
+            var foundTag = false;
+            tags.forEach(function(tag) {
+                var tagName = tag.innerText.toLowerCase();
+                if (tagName.includes(tagSearchValue)) {
+                    foundTag = true;
+                }
+            });
+
+            if (foundTag) {
+                note.style.display = 'block';
+            } else {
+                note.style.display = 'none';
+            }
+        });
+    });
+</script>
+</body>
+</html>

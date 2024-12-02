@@ -20,5 +20,8 @@ public interface NoteRepository extends JpaRepository<Note, Integer> {
     @Modifying
     @Query("DELETE FROM Note n WHERE n.noteId = :noteId AND n.user.userId = :userId")
     int deleteByNoteIdAndUserId(@Param("noteId") int noteId, @Param("userId") int userId);
+
+    @Query("SELECT n FROM Note n JOIN NoteCollaborator nc ON n.noteId = nc.id.noteId WHERE nc.id.collaboratorId = :userId")
+    List<Note> findSharedNotesByCollaboratorId(@Param("userId") int userId);
 }
 
