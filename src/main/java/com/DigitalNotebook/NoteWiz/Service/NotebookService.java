@@ -42,14 +42,7 @@ public class NotebookService {
                 "ORDER BY n.notebook_title";
         return jdbcTemplate.queryForList(sql, userId);
     }
-//    public List<Notebook> getUserNotebooksWithNotes(int userId) {
-//        List<Notebook> notebooks = notebookRepository.findByUser_UserId(userId);
-//        notebooks.forEach(notebook -> {
-//            // Initialize lazy-loaded notes
-//            notebook.getNotes().size();
-//        });
-//        return notebooks;
-//    }
+
     public List<Notebook> getUserNotebooksWithNotes(int userId) {
     // Fetch notebooks for the user
     List<Notebook> notebooks = notebookRepository.findByUser_UserId(userId);

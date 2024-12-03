@@ -90,7 +90,7 @@
         <input type="hidden" id="noteId" value="">
         <select id="notebookSelect" class="form-select">
           <option value="" disabled selected>Select a notebook</option>
-          <option th:each="notebook : ${notebooks}"
+          <option th:each="notebook : ${userNotebooks}"
                   th:value="${notebook.notebookId}"
                   th:text="${notebook.notebookTitle}">
           </option>

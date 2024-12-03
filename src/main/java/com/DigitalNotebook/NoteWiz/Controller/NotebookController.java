@@ -56,5 +56,18 @@ public class NotebookController {
         response.put("success", success);
         return ResponseEntity.ok(response);
     }
+
+    @GetMapping("/userNotebooks")
+    public ResponseEntity<List<Notebook>> getUserNotebooks(HttpSession session) {
+        User loggedInUser = (User) session.getAttribute("loggedInUser");
+
+        if (loggedInUser == null) {
+            return ResponseEntity.status(401).body(null);
+        }
+
+        List<Notebook> userNotebooks = notebookService.getUserNotebooksWithNotes(loggedInUser.getUserId());
+        return ResponseEntity.ok(userNotebooks);
+    }
+
 }
 

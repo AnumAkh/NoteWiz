@@ -123,7 +123,7 @@ try {
 function openAddToNotebookModal(noteId) {
   document.getElementById("noteId").value = noteId;
   // First, fetch the notebooks (this can be done via an API call)
-  fetch('/notebooks/all') // Ensure this URL is correct
+  fetch('/notebooks/userNotebooks') // Ensure this URL is correct
     .then(response => response.json())
     .then(notebooks => {
       const notebookSelect = document.getElementById('notebookSelect');
