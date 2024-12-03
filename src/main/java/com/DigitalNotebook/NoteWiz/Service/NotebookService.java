@@ -44,7 +44,7 @@ public class NotebookService {
     }
 
     public List<Notebook> getUserNotebooksWithNotes(int userId) {
-    // Fetch notebooks for the user
+
     List<Notebook> notebooks = notebookRepository.findByUser_UserId(userId);
 
     for (Notebook notebook : notebooks) {
